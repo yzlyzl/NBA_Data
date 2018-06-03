@@ -24,20 +24,20 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:wycwq-88833592@localhost/flask_test'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://dbname:dbpassword@dbhost/dbname'
     SECRET_KEY = 'kkk'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:wycwq-88833592@localhost/flask_test'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://dbname:dbpassword@dbhost/dbname'
     SECRET_KEY = 'kkk'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:wycwq-88833592@localhost/flask_test'
+    SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://dbname:dbpassword@dbhost/dbname'
     SECRET_KEY = 'kkk'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
