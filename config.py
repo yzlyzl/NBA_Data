@@ -38,6 +38,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://root:wycwq-88833592@localhost/flask_test'
+    # SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector://ecnu%cs:database-123@ecnu.mysqldb.chinacloudapi.cn:3306/nba_data'
     SECRET_KEY = 'kkk'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
 
@@ -47,5 +48,5 @@ config = {
     'testing': TestingConfig,
     'production': ProductionConfig,
 
-    'default': DevelopmentConfig
+    'default': ProductionConfig
 }

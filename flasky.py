@@ -7,6 +7,9 @@ from app import create_app, db
 from app.models import Users
 
 # app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+#
+#    development(default) & testing & production
+#
 app = create_app('default')
 # migrate = Migrate(app, db)
 

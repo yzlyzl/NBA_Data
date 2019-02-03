@@ -30,9 +30,13 @@
 								<li><a href="{{ url_for('main.index') }}">Home</a></li>
 {#								<li><a href="http://127.0.0.1:5000/generic.html">Generic</a></li>#}
 {#								<li><a href="http://127.0.0.1:5000/elements.html">Elements</a></li>#}
-								<li><a href="{{ url_for('main.login') }}">Log In</a></li>
-								<li><a href="{{ url_for('main.register') }}">Sign Up</a></li>
-                                <li><a href="{{ url_for('main.logout') }}">Log Out</a></li>
+								<!-- <li><a href="{{ url_for('auth.login') }}">Log In</a></li> -->
+								<li><a href="{{ url_for('auth.register') }}">Sign Up</a></li>
+								{% if current_user.is_authenticated() %}
+                                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                                {% else %}
+                                <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                                {% endif %}
 							</ul>
 							</ul>
 							<a href="#" class="close">Close</a>
@@ -48,7 +52,7 @@
 						<div class="inner">
 							<h2 class="major">You can login here.</h2>
 							<p> Input your Username&password.</p>
-							<form method="post" action="/login">
+							<form method="post" action="/auth/login">
                             {{ wtf.quick_form(form) }}
 							</form>
 
@@ -68,7 +72,7 @@
 	</body>
 </html>
 
-{#{% extends "form_base.html" %}#}
+<!-- {#{% extends "form_base.html" %}#}
 {#{% import "bootstrap/wtf.html" as wtf %}#}
 {#{% block title %}Flasky{% endblock %}#}
 {#{% block page_content %}#}
@@ -76,9 +80,9 @@
 {#<div class="page-header">#}
 {# <h1>Login</h1>#}
 {#</div>#}
-{#    <form action="/login" method="post">#}
+{#    <form action="/auth/login" method="post">#}
 {#    {{ wtf.quick_form(form) }}#}
 {##}
 {#    </form>#}
 {##}
-{#{% endblock %}#}
+{#{% endblock %}#} -->

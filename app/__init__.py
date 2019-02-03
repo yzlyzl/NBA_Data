@@ -16,7 +16,7 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection='strong'
 # 当未登录的用户尝试访问一个 login_required 装饰的视图，Flask-Login会闪现一条消息并且重定向到登录视图
-login_manager.login_view='user.login'
+login_manager.login_view='auth.login'
 
 
 
@@ -32,9 +32,14 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     
-    # 导入main文件夹中__init__.py定义的Blueprint，并注册Blueprint
-    from .main import main as main_blueprint     
+
+    from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+    # 导入auth文件夹中__init__.py定义的Blueprint，并注册Blueprint
+    from .auth import auth as auth_blueprint     
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
+    from .api import api as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/api')
 
     return app
 
